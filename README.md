@@ -1,13 +1,8 @@
-# Korvantis Fresh Product Control - Cambios Web
+# Korvantis Fresh Product Control
 
-Cambios incluidos:
-
-- Pantalla principal al entrar: Urgentes, productos con 10 días o menos.
-- Botón "Regresar a Urgentes".
-- Crear trabajador solo con usuario + contraseña + centro.
-- El trabajador entra con usuario, no con email.
-- El superadmin puede seguir entrando con su email.
-- Incluye SQL opcional con artículos iniciales leídos de las etiquetas:
-  supabase/seed_productos_modulo7.sql
-
-Sube el contenido descomprimido a GitHub y haz redeploy en Vercel.
+Cambios:
+- Alta trabajador: nombre, usuario, contraseña y centro.
+- Trabajador entra con usuario y contraseña.
+- Superadmin entra con email y contraseña.
+- Pantalla principal: Urgentes ≤ 10 días.
+- Botón Regresar a Urgentes.
