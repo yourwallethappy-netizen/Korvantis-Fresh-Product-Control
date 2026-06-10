@@ -1,0 +1,45 @@
+
+-- Artículos iniciales detectados de las etiquetas.
+-- Ejecutar después de crear al menos un centro.
+-- Cambia 'Centro Principal' si tu centro tiene otro nombre.
+
+insert into public.productos (centro_id, modulo, codigo, descripcion, fecha_caducidad, estado)
+select c.id, '7', v.codigo, v.descripcion, '2026-06-20'::date, 'activo'
+from public.centros c
+cross join (values
+  ('0313593','JAMON COCIDO NATURARTE CAMPOFRIO 120G'),
+  ('0235671','YORK SANDWICH ALMIREZ ATM L-500G'),
+  ('0148809','YORK ELPOZO PIEZA 1 KG'),
+  ('0182139','FIAMBRE JAMON COCIDO ALMIREZ (KG)'),
+  ('0106043','PECHUGA PAVO S/C SIN ALERG ELPOZO (KG)'),
+  ('0296772','CABEZA LOMO MECHADA LOS CHICLANEROS (KG)'),
+  ('0065050','JAMON COCIDO CAMPOFRIO FINISSIMA 115G'),
+  ('0201061','BACON SELECCI 1820 PROLONGO 1/2 PZA (KG)'),
+  ('0190991','BACON ELPOZO (KG)'),
+  ('0235663','PECHUGA PAVO SANDWICH ALMIREZ L 500G ATM'),
+  ('0187153','FIAMBRE YORK SANDWICH M ELPOZO TP L-300G'),
+  ('0281915','FIAMBRE YORK MAXI ELPOZO 450G'),
+  ('0013771','PECHUGA MAXT PAVOFRO (KG)'),
+  ('0070243','PECHUGA PAVO ALMIREZ (KG)'),
+  ('0074039','FIAMBRE SANDWICH ELPOZO (KG)'),
+  ('0060433','PECHUGA PAVO CAMPOFRIO FINISSIMA SOB 115G'),
+  ('0293233','PECHUGA PAVO XJ CAMPOFRIO L-70G'),
+  ('0293225','JAMON COCIDO XJ CAMPOFRIO L-75G'),
+  ('0218685','YORK PAVO ALMIREZ (KG)'),
+  ('0065060','JAMON COCIDO CAMPOFRIO FINISSIMA 115G'),
+  ('0293241','PECHUGA PAVO BRASADA XJ CAMPOFRIO L-70G'),
+  ('0205953','PECHUGA POLLO EX JUG CAMPOFRIO L-75G'),
+  ('0205039','PECHUGA PAVO S/C R/SAL ELPOZO PZA 340G'),
+  ('0035777','PECHUGA PAVO S/C ELPOZO PZA 1 KG'),
+  ('0059826','FIAMBRE PROLONGO SANDWICH (KG)'),
+  ('0197061','PALETA COCIDA ALMIREZ L 2X500 GR'),
+  ('0210518','BACON HORECA ALMIREZ (KG)'),
+  ('0178061','LOMO HORNO PIMIENTA PROLONGO SOB.100G'),
+  ('0259283','PALETA HORNO DUROC 50% PROLONGO L-140GR'),
+  ('0201061','BACON SELECCI 1820 PROLONGO 1/2 PZA (KG)'),
+  ('0139871','JAMON COCIDO JUGO ELPOZO (KG)')
+) as v(codigo, descripcion)
+where c.nombre = 'Centro Principal'
+on conflict (centro_id, codigo) do update
+set descripcion = excluded.descripcion,
+    modulo = excluded.modulo;
