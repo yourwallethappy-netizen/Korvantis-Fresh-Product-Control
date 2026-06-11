@@ -7,7 +7,7 @@ const supabaseUrl=import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey=import.meta.env.VITE_SUPABASE_ANON_KEY;
 const supabaseReady=Boolean(supabaseUrl&&supabaseAnonKey);
 const supabase=supabaseReady?createClient(supabaseUrl,supabaseAnonKey):null;
-const fechaInicial="2026-06-20",workerDomain="korvantis.local";
+const fechaInicial="2026-06-20",workerDomain="korvantis.app";
 const usuarioAEmail=u=>{const x=u.trim().toLowerCase().replace(/\s+/g,"");return x.includes("@")?x:`${x}@${workerDomain}`};
 const usuarioVisible=e=>(e||"").replace(`@${workerDomain}`,"");
 const diasRestantes=f=>{const h=new Date();h.setHours(0,0,0,0);return Math.ceil((new Date(f+"T00:00:00")-h)/86400000)};
