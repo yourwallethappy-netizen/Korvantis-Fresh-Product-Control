@@ -1,8 +1,7 @@
 # Korvantis Fresh Product Control
 
 Cambios:
-- Alta trabajador: nombre, usuario, contraseña y centro.
-- Trabajador entra con usuario y contraseña.
-- Superadmin entra con email y contraseña.
-- Pantalla principal: Urgentes ≤ 10 días.
-- Botón Regresar a Urgentes.
+- Eliminado concepto de Centro Principal automático.
+- El superadmin crea centros desde la app.
+- El superadmin crea trabajadores con nombre, usuario, contraseña y centro.
+- Trabajador solo ve su centro.
